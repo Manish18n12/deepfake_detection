@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Deepfake AI</title>
+<link rel="stylesheet" href="/static/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<nav class="nav">
+<div class="logo">Deepfake AI</div>
+<div>
+<a href="/">Analyze</a>
+<a href="/gallery">Gallery</a>
+</div>
+</nav>
+
+<div class="container">
+
+<h1>AI Face Authenticity Check</h1>
+
+<form method="POST" enctype="multipart/form-data" id="uploadForm">
+<label class="upload-box">
+<input type="file" name="file" required>
+<span>Drag & Drop or Click Upload</span>
+</label>
+
+<button type="submit">Start Analysis</button>
+</form>
+
+<div id="loading" class="loading">
+<div class="spinner"></div>
+<p>Analyzing Image...</p>
+</div>
+
+{% if result %}
+<div class="result">
+<img src="{{ image_path }}">
+<h2>{{ result }}</h2>
+</div>
+{% endif %}
+
+</div>
+
+<script>
+const form=document.getElementById("uploadForm");
+const loading=document.getElementById("loading");
+
+form.addEventListener("submit",()=>{
+loading.style.display="flex";
+});
+</script>
+
+</body>
+</html>
